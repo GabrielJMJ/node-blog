@@ -11,5 +11,6 @@ routes.forEach(function (router) {
 
 app.set('views', views);
 app.set('view engine', 'jade');
+app.locals.pretty = true;
 
 module.exports = app;
