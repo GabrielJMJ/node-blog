@@ -1,0 +1,9 @@
+extend ../../layout
+
+block content
+    #article
+        #title
+            h1 #{post.title}
+        #date
+            i #{post.created_at}
+        #content #{post.content}

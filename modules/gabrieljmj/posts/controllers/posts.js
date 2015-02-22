@@ -3,17 +3,19 @@ var PostsModel = require('../models/posts')
 
 controller.index = function (req, res) {
     PostsModel.find({}, function (err, allPosts) {
-        msg = 'Posts: ' + JSON.stringify(allPosts);
-        res.end(msg);
+        if (!err) {
+            res.render('gabrieljmj/posts/index', {posts: allPosts});
+        }
     });
 }
 
 controller.post = function (req, res) {
     var postId = req.param('postId');
-}
-
-controller.create = function (req, res) {
-
+    PostsModel.findOne({_id: postId}, function (err, post) {
+        if (!err) {
+            res.render('gabrieljmj/posts/post', {post: post});
+        }
+    });
 }
 
 module.exports = controller;
