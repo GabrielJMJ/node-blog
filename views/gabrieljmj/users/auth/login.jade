@@ -1,0 +1,12 @@
+extends ../../../layout
+
+block content
+    #title
+        h1 Login
+    #login-form
+        form(method="post", action="/login")
+            input#username(type="text", name="username", placeholder="Username", required)
+            input#password(type="password", name="password", placeholder="Password", required)
+            input#login(type="submit", value="Login")
+    if message
+        #message #{message}

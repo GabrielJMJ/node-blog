@@ -1,5 +1,5 @@
 var mongoose   = require('mongoose')
   , postSchema = require('./schemas/post')
-  , modelName  = 'Post';
+  , modelName  = 'Posts';
 
 module.exports = mongoose.model(modelName, postSchema);

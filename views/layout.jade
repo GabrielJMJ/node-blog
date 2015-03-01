@@ -6,4 +6,8 @@ html
         block css
             link(href='http://getbootstrap.com/dist/css/bootstrap.min.css', rel='stylesheet')
     body
-        block content
+        if user
+            #topbar
+                span Logged as #{user.username}
+        #content
+            block content
