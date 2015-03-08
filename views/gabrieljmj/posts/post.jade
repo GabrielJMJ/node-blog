@@ -5,5 +5,5 @@ block content
         #title
             h1 #{post.title}
         #date
-            i #{post.created_at}
-        #content #{post.content}
+            i #{post.created_at} by #{post.author.username}
+        #content !{post.content}

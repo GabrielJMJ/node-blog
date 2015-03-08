@@ -19,10 +19,6 @@ function (req, username, password, done) {
             return done(null, false, req.flash('login-err', 'User not found'));
         }
 
-        if (!verifyPassword(user, password)) {
-            return done(null, false, req.flash('login-err', 'Incorrect password'));
-        }
-
         bcrypt.compare(password, user.password, function (err, res) {
             if (err) {
                 console.log('Error: ' + err)
@@ -35,6 +31,8 @@ function (req, username, password, done) {
 
             return done(null, false, req.flash('login-err', 'Incorrect password'));
         });
+
+        return done(null, user);
     });
 }));
 
@@ -45,11 +43,5 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
     done(null, user);
 });
-
-var verifyPassword = function (user, password) {
-    bcrypt.compare(password, user.password, function (err, res) {
-        return res;
-    });
-}
 
 module.exports = passport;

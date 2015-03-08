@@ -4,6 +4,6 @@ var mongoose = require('mongoose')
 module.exports = new Schema({
       title:      {type: String}
     , content:    {type: String}
-    , author:     {type: Number}
+    , author:     {type: Schema.Types.ObjectId, ref: 'Users'}
     , created_at: {type: Date, default: Date.now}
 });

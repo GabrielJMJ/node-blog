@@ -1,4 +1,5 @@
-var app          = require('express')()
+var express      = require('express')
+  , app          = express()
   , db           = require('./config/db')
   , routes       = require('./config/routes')
   , path         = require('path')
@@ -10,6 +11,7 @@ var app          = require('express')()
   , session      = require('express-session');
 
 /* Views */
+app.use(express.static(path.join(__dirname, 'web')));
 app.set('views', views);
 app.set('view engine', 'jade');
 app.locals.pretty = true;

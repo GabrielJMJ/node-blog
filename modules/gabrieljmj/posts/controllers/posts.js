@@ -11,11 +11,15 @@ controller.index = function (req, res) {
 
 controller.post = function (req, res) {
     var postId = req.param('postId');
-    postsModel.findOne({_id: postId}, function (err, post) {
-        if (!err) {
-            res.render('gabrieljmj/posts/post', {post: post});
-        }
-    });
+    postsModel
+        .findOne({_id: postId})
+        .populate('author')
+        .exec(function (err, post) {
+            if (!err) {
+                post.content = post.content.replace(/\n?\r\n/g, '<br />' );
+                res.render('gabrieljmj/posts/post', {post: post, user: req.user});
+            }
+        });
 }
 
 module.exports = controller;

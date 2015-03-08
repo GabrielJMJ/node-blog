@@ -3,4 +3,8 @@ extends ../../layout
 block content
     #user
         #username
-            h1 #{user.username}
+            h1 #{pr_user.username}
+    #posts
+        each post in posts.length ? posts : [{title: 'NO POSTS'}]
+            li 
+                a(href='/post/#{post._id}') #{post.title}

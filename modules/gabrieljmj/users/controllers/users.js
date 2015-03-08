@@ -1,10 +1,11 @@
 var usersModel = require('../models/users')
+  , postsModel = require('../../posts/models/posts')
   , controller = {};
 
 controller.user = function (req, res) {
     var userId = req.param('userId');
 
-    usersModel.findOne({_id: userId}, function (err, user) {
+    usersModel.findOne({username: userId}, function (err, user) {
         if (err) {
             console.log(err);
         }
@@ -13,7 +14,9 @@ controller.user = function (req, res) {
             res.render('gabrieljmj/users/user-not-found');
         }
 
-        res.render('gabrieljmj/users/user', {user: user});
+        postsModel.find({author: user._id}, function (err, posts) {
+            res.render('gabrieljmj/users/user', {pr_user: user, posts: posts});
+        });
     });
 }
 

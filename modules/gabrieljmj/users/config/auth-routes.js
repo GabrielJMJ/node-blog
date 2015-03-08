@@ -1,6 +1,5 @@
 var passport   = require('../config/passport')
-  , express    = require('express')
-  , router     = express.Router()
+  , router     = require('express').Router()
   , usersModel = require('../models/users')
   , bcrypt     = require('bcrypt-nodejs');
 

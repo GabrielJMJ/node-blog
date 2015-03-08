@@ -1,5 +1,4 @@
-var express    = require('express')
-  , router     = express.Router()
+var router          = require('express').Router()
   , usersController = require('../controllers/users');
 
 router.get('/authors/:userId', usersController.user);
