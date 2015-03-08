@@ -4,7 +4,7 @@ var router          = require('express').Router()
 
 router.use(function (req, res, next) {
     if (!req.user) {
-        res.send('what???', 404);
+        res.send('Page not fucking found', 404);
     }
 
     next();
