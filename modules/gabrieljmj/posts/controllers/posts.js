@@ -2,6 +2,7 @@ var postsModel = require('../models/posts')
   , controller = {};
 
 controller.index = function (req, res) {
+    //postsModel.remove({}, function (err){});
     postsModel.find({}, function (err, allPosts) {
         if (!err) {
             res.render('gabrieljmj/posts/index', {posts: allPosts, user: req.user});

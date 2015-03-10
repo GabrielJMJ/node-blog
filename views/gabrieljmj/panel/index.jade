@@ -1,0 +1,10 @@
+extend ../../layout
+
+block content
+    each post in posts.length ? posts : [{title: 'NO POSTS'}]
+        li 
+            a(href='/post/#{post._id}') #{post.title}
+            span  | 
+            a(href='/authors/panel/post/edit/#{post._id}') Edit
+            !| 
+            a(href='/authors/panel/post/delete/#{post._id}') Delete

@@ -1,0 +1,9 @@
+extends ../../layout
+
+block content
+	if !post_not_found
+		form(method='post')
+			input(type='text', value='#{post.title}', name='title')
+			textarea(name='content')
+				!{post.content}
+			input(type='submit', value='Update')

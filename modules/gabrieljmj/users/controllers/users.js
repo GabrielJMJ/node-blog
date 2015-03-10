@@ -10,7 +10,7 @@ controller.user = function (req, res) {
             console.log(err);
         }
 
-        if (!user) {
+        if (!user.active) {
             res.render('gabrieljmj/users/user-not-found');
         }
 
