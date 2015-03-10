@@ -34,6 +34,15 @@ controller.createAction = function (req, res) {
 
 //DELETE
 controller.deleteAction = function (req, res) {
+    var postId = req.param('postId');
+
+    var updated = {$set: {
+        active: 0
+    }};
+
+    postsModel.update({_id: postId}, updated, {upsert: true}, function (err) {
+        res.redirect('/panel');
+    });
 }
 
 //EDIT
